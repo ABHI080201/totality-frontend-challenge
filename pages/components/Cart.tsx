@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useCart } from "../context/CardContext";
+import { useCart } from "../../context/CardContext";
 import Payment from "./Payment";
 
 const Cart: React.FC = () => {

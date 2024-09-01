@@ -1,5 +1,5 @@
 import React from "react";
-import { useCart } from "../context/CardContext";
+import { useCart } from "../../context/CardContext";
 import toast from "react-hot-toast";
 import { FaStar } from "react-icons/fa6";
 
