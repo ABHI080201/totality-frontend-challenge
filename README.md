@@ -1,4 +1,8 @@
 Property Booking Site
+
+
+
+
 Welcome to the Property Booking Site, a fully responsive web application built with Next.js and deployed on Vercel. This platform allows users to browse, book, and manage properties seamlessly.
 
 🚀 Live Demo
