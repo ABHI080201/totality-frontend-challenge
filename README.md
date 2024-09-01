@@ -49,6 +49,7 @@ Frontend: Next.js, React, Tailwind CSS
 
 Deployment: Vercel
 
+deployment link: https://totality-frontend-challenge-weld.vercel.app/
 🏁 Getting Started
 
 To get a local copy up and running, follow these simple steps.
