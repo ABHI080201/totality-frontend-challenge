@@ -1,20 +1,17 @@
 import React, { useState } from "react";
 
 const Payment: React.FC = () => {
-  // State to control modal visibility
   const [isModalOpen, setIsModalOpen] = useState(true);
 
-  // Function to handle closing the modal
   const handleClose = () => {
-    setIsModalOpen(false); // Set modal visibility to false
+    setIsModalOpen(false);
   };
 
   return (
     <>
-      {isModalOpen && ( // Conditional rendering based on modal visibility
+      {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
           <div className="relative bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-            {/* Close Button */}
             <button
               onClick={handleClose}
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
@@ -37,9 +34,7 @@ const Payment: React.FC = () => {
 
             <h2 className="text-xl font-bold mb-4">Cards, UPI & More</h2>
 
-            {/* Payment Methods */}
             <div className="space-y-4">
-              {/* Card */}
               <div className="flex items-center border p-2 rounded-lg relative">
                 <img
                   src="https://i.pinimg.com/originals/38/2f/0a/382f0a8cbcec2f9d791702ef4b151443.png"
@@ -55,7 +50,6 @@ const Payment: React.FC = () => {
                 <input type="checkbox" className="absolute right-4" />
               </div>
 
-              {/* UPI */}
               <div className="flex items-center border p-2 rounded-lg relative">
                 <img
                   src="https://as1.ftcdn.net/v2/jpg/06/16/18/18/1000_F_616181843_l404nbV07vMiXDZ1IhWiqZRDpetpuigu.jpg"
@@ -71,7 +65,6 @@ const Payment: React.FC = () => {
                 <input type="checkbox" className="absolute right-4" />
               </div>
 
-              {/* Netbanking */}
               <div className="flex items-center border p-2 rounded-lg relative">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfOoIN6wwYmTOr3EDXfVWHtAYuq--6lAUXxjIOYEQd50zxeSciUTyilUDWvSzWOU1hXzg&usqp=CAU"
@@ -85,7 +78,6 @@ const Payment: React.FC = () => {
                 <input type="checkbox" className="absolute right-4" />
               </div>
 
-              {/* Wallet */}
               <div className="flex items-center border p-2 rounded-lg relative">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5npKkTK1LnrdqfvqbC2IkFQkwJT9FNuxQgiBx9mW7UccI-w9YNDYB_BtbrqSnzXiLK2s&usqp=CAU"
@@ -99,7 +91,6 @@ const Payment: React.FC = () => {
                 <input type="checkbox" className="absolute right-4" />
               </div>
 
-              {/* EMI */}
               <div className="flex items-center border p-2 rounded-lg relative">
                 <img
                   src="https://w7.pngwing.com/pngs/893/849/png-transparent-emi-hd-logo-thumbnail.png"
@@ -116,7 +107,6 @@ const Payment: React.FC = () => {
               </div>
             </div>
 
-            {/* Total Amount and Pay Now Button */}
             <div className="mt-6 flex justify-between items-center">
               <div>
                 <p className="text-xl font-bold">$250,000</p>
@@ -127,7 +117,6 @@ const Payment: React.FC = () => {
               </button>
             </div>
 
-            {/* Security Information */}
             <div className="mt-4 flex justify-between items-center text-sm text-gray-500">
               <p>Account</p>
               <p>

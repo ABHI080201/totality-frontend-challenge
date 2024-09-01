@@ -1,29 +1,23 @@
-// context/CardContext.tsx
-
 import React, { createContext, useContext, useState } from "react";
 
-// Define the cart item type
 type CartItem = {
   image: string;
   description: string;
   price: string;
 };
 
-// Define the context type
 type CartContextType = {
   cartItems: CartItem[];
   addToCart: (item: CartItem) => void;
   removeFromCart: (index: number) => void;
 };
 
-// Create the context with default values
 const CartContext = createContext<CartContextType>({
   cartItems: [],
   addToCart: () => {},
   removeFromCart: () => {},
 });
 
-// Provider component
 export const CartProvider: React.FC = ({ children }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
@@ -44,5 +38,4 @@ export const CartProvider: React.FC = ({ children }) => {
   );
 };
 
-// Custom hook to use the cart context
 export const useCart = () => useContext(CartContext);

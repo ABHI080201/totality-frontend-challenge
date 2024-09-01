@@ -8,6 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Toaster position="top-right" reverseOrder={false} />
+
       <CartProvider>
         <Navbar />
         <Component {...pageProps} />

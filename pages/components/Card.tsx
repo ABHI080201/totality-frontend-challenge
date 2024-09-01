@@ -1,5 +1,3 @@
-// components/Card.tsx
-
 import React from "react";
 import { useCart } from "../context/CardContext";
 import toast from "react-hot-toast";
@@ -16,10 +14,8 @@ const Card: React.FC<CardProps> = ({ image, description, price, rating }) => {
   const { addToCart } = useCart();
 
   const handleBuyNow = () => {
-    // Add item to cart
     addToCart({ image, description, price });
 
-    // Show toast notification
     toast.success("Item added to cart!");
   };
 

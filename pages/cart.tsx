@@ -1,5 +1,3 @@
-// pages/cart.tsx
-
 import React from "react";
 import Cart from "./components/Cart";
 

@@ -1,5 +1,3 @@
-// pages/buy-rent.tsx
-
 import React from "react";
 import BuyRent from "./components/BuyRent";
 

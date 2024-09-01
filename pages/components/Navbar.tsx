@@ -1,5 +1,3 @@
-// components/Navbar.tsx
-
 import React from "react";
 import Link from "next/link";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
@@ -10,7 +8,6 @@ const Navbar: React.FC = () => {
     <nav className="bg-white shadow-md">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-          {/* Left Side - Logo and Links */}
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="text-2xl font-bold">
               <GiFamilyHouse className="w-10 h-10" />
@@ -39,9 +36,7 @@ const Navbar: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Side - Search Bar and Cart */}
           <div className="flex items-center">
-            {/* Search Bar */}
             <div className="relative hidden sm:block">
               <input
                 type="text"
@@ -53,7 +48,6 @@ const Navbar: React.FC = () => {
               </div>
             </div>
 
-            {/* Cart Icon */}
             <Link
               href="/cart"
               className="ml-4 text-gray-800 hover:text-gray-600"
