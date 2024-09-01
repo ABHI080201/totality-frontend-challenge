@@ -1,149 +1,107 @@
-// // components/BuyRent.tsx
+// import { useState } from "react";
+// import CardsGrid from "./Cardgrid";
 
-// import React, { useState } from "react";
+// const BuyRent = () => {
+//   const [selectedBHK, setSelectedBHK] = useState<number | null>(null);
+//   const [selectedSquareFeet, setSelectedSquareFeet] = useState<number | null>(
+//     null
+//   );
+//   const [selectedPriceRange, setSelectedPriceRange] = useState<
+//     [number, number] | null
+//   >(null);
 
-// const bhkOptions = ["1 BHK", "2 BHK", "3 BHK", "4 BHK", "5 BHK"];
-// const SquareFeet = ["500sqft", "650sqft", "750sqft", "1050sqft", "1500sqft"]; // Add more countries as needed
-// const priceRanges = [
-//   "$10,000 - $20,000",
-//   "$20,000 - $30,000",
-//   "$30,000 - $40,000",
-//   "$40,000 - $50,000",
-// ];
-
-// const BuyRent: React.FC = () => {
-//   const [selectedBHK, setSelectedBHK] = useState<string>("");
-//   const [selectedCountry, setSelectedCountry] = useState<string>("");
-//   const [selectedPriceRange, setSelectedPriceRange] = useState<string>("");
+//   const handleFilter = () => {
+//     // This function now just triggers the re-render with the selected filters
+//   };
 
 //   return (
-//     <div className="p-6">
-//       <h2 className="text-2xl font-bold mb-4">Buy/Rent Properties</h2>
+//     <div>
+//       <div>
+//         <label>BHK:</label>
+//         <select
+//           onChange={(e) => setSelectedBHK(parseInt(e.target.value))}
+//           defaultValue=""
+//         >
+//           <option value="">All</option>
+//           <option value={1}>1 BHK</option>
+//           <option value={2}>2 BHK</option>
+//           <option value={3}>3 BHK</option>
+//           <option value={4}>4 BHK</option>
+//         </select>
 
-//       <div className="flex flex-wrap gap-4 mb-6">
-//         {/* BHK Dropdown */}
-//         <div className="relative inline-block w-full sm:w-48">
-//           <select
-//             className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-blue-500"
-//             value={selectedBHK}
-//             onChange={(e) => setSelectedBHK(e.target.value)}
-//           >
-//             <option value="">BHK</option>
-//             {bhkOptions.map((bhk) => (
-//               <option key={bhk} value={bhk}>
-//                 {bhk}
-//               </option>
-//             ))}
-//           </select>
-//         </div>
+//         <label>Square Feet:</label>
+//         <select
+//           onChange={(e) => setSelectedSquareFeet(parseInt(e.target.value))}
+//           defaultValue=""
+//         >
+//           <option value="">All</option>
+//           <option value={400}>400 sqft</option>
+//           <option value={500}>500 sqft</option>
+//           <option value={600}>600 sqft</option>
+//           <option value={700}>700 sqft</option>
+//           <option value={1000}>1000 sqft</option>
+//           <option value={1200}>1200 sqft</option>
+//         </select>
 
-//         {/* Country Dropdown */}
-//         <div className="relative inline-block w-full sm:w-48">
-//           <select
-//             className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-blue-500"
-//             value={selectedCountry}
-//             onChange={(e) => setSelectedCountry(e.target.value)}
-//           >
-//             <option value="">Country</option>
-//             {countries.map((country) => (
-//               <option key={country} value={country}>
-//                 {country}
-//               </option>
-//             ))}
-//           </select>
-//         </div>
+//         <label>Price Range:</label>
+//         <select
+//           onChange={(e) => {
+//             const value = e.target.value
+//               .split("-")
+//               .map((price) => parseInt(price.replace(/\D/g, ""), 10));
+//             setSelectedPriceRange(value as [number, number]);
+//           }}
+//           defaultValue=""
+//         >
+//           <option value="">All</option>
+//           <option value="100000-200000">$100,000 - $200,000</option>
+//           <option value="200000-300000">$200,000 - $300,000</option>
+//           <option value="300000-400000">$300,000 - $400,000</option>
+//           <option value="400000-500000">$400,000 - $500,000</option>
+//         </select>
 
-//         {/* Price Range Dropdown */}
-//         <div className="relative inline-block w-full sm:w-48">
-//           <select
-//             className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-blue-500"
-//             value={selectedPriceRange}
-//             onChange={(e) => setSelectedPriceRange(e.target.value)}
-//           >
-//             <option value="">Price Range</option>
-//             {priceRanges.map((range) => (
-//               <option key={range} value={range}>
-//                 {range}
-//               </option>
-//             ))}
-//           </select>
-//         </div>
+//         <button onClick={handleFilter}>Sort Now</button>
 //       </div>
+
+//       <CardsGrid
+//         selectedBHK={selectedBHK}
+//         selectedSquareFeet={selectedSquareFeet}
+//         selectedPriceRange={selectedPriceRange}
+//       />
 //     </div>
 //   );
 // };
 
 // export default BuyRent;
-// components/BuyRent.tsx
 
-// components/BuyRent.tsx
-
-import React, { useState } from "react";
+import { useState } from "react";
 import CardsGrid from "./Cardgrid";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-const bhkOptions = ["1BHK", "2BHK", "3BHK", "4BHK", "5BHK"];
-const squareFeetOptions = [
-  "400 sqft",
-  "500 sqft",
-  "600 sqft",
-  "700 sqft",
-  "800 sqft",
-  "900 sqft",
-  "1000 sqft",
-];
-const priceRanges = [
-  "$100,000 - $200,000",
-  "$200,000 - $300,000",
-  "$300,000 - $400,000",
-  "$400,000 - $500,000",
-];
+const BuyRent = () => {
+  const [selectedBHK, setSelectedBHK] = useState<number | null>(null);
+  const [selectedSquareFeet, setSelectedSquareFeet] = useState<
+    [number, number] | null
+  >(null);
+  const [selectedPriceRange, setSelectedPriceRange] = useState<
+    [number, number] | null
+  >(null);
 
-const properties = [
-  // Your properties data here
-];
-
-const BuyRent: React.FC = () => {
-  const [selectedBHK, setSelectedBHK] = useState<string>("");
-  const [selectedSquareFeet, setSelectedSquareFeet] = useState<string>("");
-  const [selectedPriceRange, setSelectedPriceRange] = useState<string>("");
-  const [filteredProperties, setFilteredProperties] = useState(properties);
-
-  const isWithinPriceRange = (price: string, range: string): boolean => {
-    const numericPrice = parseInt(price.replace(/[$,]/g, ""));
-    const [min, max] = range
-      .replace(/[$,]/g, "")
-      .split(" - ")
-      .map((value) => parseInt(value));
-
-    console.log(`Checking price ${numericPrice} within range ${min} - ${max}`);
-    return numericPrice >= min && numericPrice <= max;
-  };
+  const bhkOptions = [1, 2, 3, 4];
+  const squareFeetOptions: [number, number][] = [
+    [500, 900],
+    [900, 1300],
+    [1300, 1700],
+    [1700, 2100],
+  ];
+  const priceRanges: [number, number][] = [
+    [100000, 200000],
+    [200000, 300000],
+    [300000, 400000],
+    [400000, 500000],
+  ];
 
   const handleSortNow = () => {
-    const filtered = properties.filter((property) => {
-      const bhkMatch = selectedBHK ? property.bhk === selectedBHK : true;
-      const sqftMatch = selectedSquareFeet
-        ? property.sqft === selectedSquareFeet
-        : true;
-      const priceMatch = selectedPriceRange
-        ? isWithinPriceRange(property.price, selectedPriceRange)
-        : true;
-
-      console.log(
-        `BHK match: ${bhkMatch}, SQFT match: ${sqftMatch}, Price match: ${priceMatch}`
-      );
-      return bhkMatch && sqftMatch && priceMatch;
-    });
-
-    setFilteredProperties(filtered);
-
-    if (filtered.length > 0) {
-      toast.success("Property sorted as per the requirement");
-    } else {
-      toast.info("No properties match the selected filters");
-    }
+    // Trigger the filter or any other actions (if required)
   };
 
   return (
@@ -155,13 +113,15 @@ const BuyRent: React.FC = () => {
         <div className="relative inline-block w-full sm:w-48">
           <select
             className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-blue-500"
-            value={selectedBHK}
-            onChange={(e) => setSelectedBHK(e.target.value)}
+            value={selectedBHK ?? ""}
+            onChange={(e) =>
+              setSelectedBHK(e.target.value ? parseInt(e.target.value) : null)
+            }
           >
             <option value="">BHK</option>
             {bhkOptions.map((bhk) => (
               <option key={bhk} value={bhk}>
-                {bhk}
+                {bhk} BHK
               </option>
             ))}
           </select>
@@ -171,13 +131,18 @@ const BuyRent: React.FC = () => {
         <div className="relative inline-block w-full sm:w-48">
           <select
             className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-blue-500"
-            value={selectedSquareFeet}
-            onChange={(e) => setSelectedSquareFeet(e.target.value)}
+            value={selectedSquareFeet ? selectedSquareFeet.join("-") : ""}
+            onChange={(e) => {
+              const value = e.target.value
+                ? (e.target.value.split("-").map(Number) as [number, number])
+                : null;
+              setSelectedSquareFeet(value);
+            }}
           >
             <option value="">Square Feet</option>
             {squareFeetOptions.map((sqft) => (
-              <option key={sqft} value={sqft}>
-                {sqft}
+              <option key={sqft.join("-")} value={sqft.join("-")}>
+                {sqft[0]} sqft - {sqft[1]} sqft
               </option>
             ))}
           </select>
@@ -187,13 +152,19 @@ const BuyRent: React.FC = () => {
         <div className="relative inline-block w-full sm:w-48">
           <select
             className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-blue-500"
-            value={selectedPriceRange}
-            onChange={(e) => setSelectedPriceRange(e.target.value)}
+            value={selectedPriceRange ? selectedPriceRange.join("-") : ""}
+            onChange={(e) => {
+              const value = e.target.value
+                ? (e.target.value.split("-").map(Number) as [number, number])
+                : null;
+              setSelectedPriceRange(value);
+            }}
           >
             <option value="">Price Range</option>
             {priceRanges.map((range) => (
-              <option key={range} value={range}>
-                {range}
+              <option key={range.join("-")} value={range.join("-")}>
+                ${range[0].toLocaleString("en-US")} - $
+                {range[1].toLocaleString("en-US")}
               </option>
             ))}
           </select>
@@ -208,11 +179,11 @@ const BuyRent: React.FC = () => {
         </button>
       </div>
 
-      {/* Display filtered properties in CardsGrid */}
-      <CardsGrid properties={filteredProperties} />
-
-      {/* Toast Container */}
-      <ToastContainer />
+      <CardsGrid
+        selectedBHK={selectedBHK}
+        selectedSquareFeet={selectedSquareFeet}
+        selectedPriceRange={selectedPriceRange}
+      />
     </div>
   );
 };
