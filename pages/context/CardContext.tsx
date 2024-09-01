@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, ReactNode } from "react";
 
 type CartItem = {
   image: string;
@@ -12,13 +12,15 @@ type CartContextType = {
   removeFromCart: (index: number) => void;
 };
 
-const CartContext = createContext<CartContextType>({
-  cartItems: [],
-  addToCart: () => {},
-  removeFromCart: () => {},
-});
+// Initialize context with undefined to handle when it's not yet provided
+const CartContext = createContext<CartContextType | undefined>(undefined);
 
-export const CartProvider: React.FC = ({ children }) => {
+// Define the props for CartProvider to include children
+interface CartProviderProps {
+  children: ReactNode;
+}
+
+export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const addToCart = (item: CartItem) => {
@@ -38,4 +40,11 @@ export const CartProvider: React.FC = ({ children }) => {
   );
 };
 
-export const useCart = () => useContext(CartContext);
+// Custom hook to use the CartContext
+export const useCart = () => {
+  const context = useContext(CartContext);
+  if (context === undefined) {
+    throw new Error("useCart must be used within a CartProvider");
+  }
+  return context;
+};
